@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir = 'rtl'>
 <head>
     <meta charset="UTF-8">
     <title>{% block title %} {% endblock %}</title>
@@ -8,7 +8,7 @@
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 </head>
 <body>
-
+    {% include "navbar.html" %} 
     {% block body %} {% endblock %}
 </body>
 </html>
