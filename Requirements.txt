@@ -1,5 +1,5 @@
-asgiref  3.11.0
-Django   5.2.9
-pip      25.3
-sqlparse 0.5.4
-tzdata   2025.2
+asgiref == 3.11.0
+Django  == 5.2.9
+pip     == 25.3
+sqlparse == 0.5.4
+tzdata   == 2025.2

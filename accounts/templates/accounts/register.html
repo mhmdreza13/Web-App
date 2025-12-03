@@ -2,4 +2,9 @@
 {% block title %} Register{% endblock title %}
 {% block body %}
 <h1>RegisterPage</h1>
+    <form method = 'post'>
+        {% csrf_token %}
+        {{form}}
+    <button type = 'submit'> register </button>
+    </form>
 {%endblock%}
