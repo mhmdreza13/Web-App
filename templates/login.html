@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fa" dir = 'rtl'>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <style>
+        body {
+            background: linear-gradient(to bottom, #315ad3, #66aaff);
+            height: 100vh;
+            margin: 0;
+            display: flex; /* دو بخش کنار هم */
+        }
+        .half {
+            flex: 1; /* هرکدام نصف عرض */
+            display: flex;
+            align-items: center;   /* وسط‌چین عمودی */
+            justify-content: center; /* وسط‌چین افقی */
+        }
+        .card {
+            width: 80%;
+            max-width: 400px;
+        }
+    </style>
+</head>
+<body>
+
+   <div class="half">
+        <!-- بخش اول -->
+        <div class="card shadow">
+            <div class="card-body">
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="id_user" class="form-label">نام کاربری یا ایمیل</label>
+                            <input type="text" name="user" id="id_user" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_password" class="form-label">رمز عبور</label>
+                            <input type="password" name="password" id="id_password" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-success w-100">ورود</button>
+                    </form>
+    </div>
+           </div>
+        </div>
+    </div>
+
+    <div class="half">
+        <!-- بخش دوم -->
+        <h1 style="color:white;">اینجا می‌تونی متن یا تصویر بذاری</h1>
+    </div>
+</body>
+</html>
