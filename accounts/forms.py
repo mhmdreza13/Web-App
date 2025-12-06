@@ -28,3 +28,7 @@ class UserRegisterForm (forms.Form):
             raise forms.ValidationError ('پسورد ها یکسان نیست')
         
         return pass_2
+
+class UserLoginForm (forms.Form):
+    user = forms.CharField()
+    password = forms.CharField()
