@@ -2,6 +2,7 @@ from django.shortcuts import render ,redirect
 from .forms import UserRegisterForm ,UserLoginForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate ,login ,logout
+from django.contrib import messages
 # Create your views here.
 
 def user_register (request):
@@ -32,7 +33,11 @@ def user_login (request):
                 user = authenticate(request ,username = data ['user'],password = data ['password'])
             if user is not None :
                 login(request,user)
+                messages.success(request,'با موفقیت وارد شدید.')
                 return redirect ('home:home')
+            else:
+                messages.success(request,'نام کاربر یا رمز عبور اشتباه است')
+                redirect ('accounts:user_login')
 
     else:
         form = UserLoginForm()
@@ -40,6 +45,7 @@ def user_login (request):
     return render(request , 'accounts/login.html',context)    
     
 
-def log_out (request):
+def user_logout (request):
     logout(request)
+    messages.success(request,'با موفقیت خارج شدید.')
     return redirect ('home:home')   
