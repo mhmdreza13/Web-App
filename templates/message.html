@@ -1,0 +1,28 @@
+  <style>
+    .custom-alert {
+        font-size: 14px;
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        z-index: 9999;
+    }
+  </style>
+{% if messages %}
+{% for msg in messages%}
+  <div {%if msg.tags %} id="myAlert" class="alert alert-{{msg.tags}} custom-alert" role="alert" {% endif%}>
+    {{ msg }} 
+  </div>
+
+  <script>
+    // بعد از یک ثانیه پیام حذف می‌شود
+    setTimeout(function() {
+      const alertBox = document.getElementById("myAlert");
+      if (alertBox) {
+        alertBox.remove();
+      }
+    }, 1500);
+  </script>
+
+{% endfor %}
+
+{% endif %}

@@ -33,10 +33,10 @@ def user_login (request):
                 user = authenticate(request ,username = data ['user'],password = data ['password'])
             if user is not None :
                 login(request,user)
-                messages.success(request,'با موفقیت وارد شدید.')
+                messages.success(request,'با موفقیت وارد شدید.','success')
                 return redirect ('home:home')
             else:
-                messages.success(request,'نام کاربر یا رمز عبور اشتباه است')
+                messages.success(request,'نام کاربر یا رمز عبور اشتباه است','danger')
                 redirect ('accounts:user_login')
 
     else:
@@ -47,5 +47,10 @@ def user_login (request):
 
 def user_logout (request):
     logout(request)
-    messages.success(request,'با موفقیت خارج شدید.')
+    messages.success(request,'با موفقیت خارج شدید.','info')
     return redirect ('home:home')   
+
+
+def user_profile (request):
+
+    return render (request ,'accounts/profile.html')

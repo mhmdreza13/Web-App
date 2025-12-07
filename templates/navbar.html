@@ -13,6 +13,9 @@
     <ul class="navbar-nav ms-auto">
         {% if user.is_authenticated %}
             <li class="nav-item">
+            <a class="nav-link" href= {% url "accounts:user_profile"%}>حساب کاربری</a>
+            </li>
+            <li class="nav-item">
             <a class="nav-link" href= {% url "accounts:user_logout"%}>خروج</a>
             </li>
         {% else %}
