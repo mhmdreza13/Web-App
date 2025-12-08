@@ -1,5 +1,6 @@
 from django.shortcuts import render ,redirect
 from .forms import UserRegisterForm ,UserLoginForm
+from .models import *
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate ,login ,logout
 from django.contrib import messages
@@ -52,5 +53,6 @@ def user_logout (request):
 
 
 def user_profile (request):
-
-    return render (request ,'accounts/profile.html')
+    profile = Profile.objects.get(user_id = request.user.id)
+    print (profile.address)
+    return render (request ,'accounts/profile.html',{'profile':profile})

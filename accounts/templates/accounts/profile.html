@@ -2,6 +2,77 @@
 
 {% block title %}حساب کاربری{% endblock title %}
 
-{% block body%} 
-<h1>حساب کاربری</h1>
+{% block body %}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4 class="mb-0">حساب کاربری</h4>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <h6 class="text-muted">نام کاربری:</h6>
+                        <p class="fw-bold">{{ profile.user.username }}</p>
+                    </div>
+                    <div class="mb-3">
+                        <h6 class="text-muted">نام خانوادگی:</h6>
+                        <p class="fw-bold">{{ profile.user.last_name }}</p>
+                    </div>
+                        <div class="mb-3">
+                        <h6 class="text-muted">ایمیل :</h6>
+                        <p class="fw-bold">{{ profile.user.email }}</p>
+                    </div>
+                    <div>
+                        <div class="mb-3">
+                        <h6 class="text-muted">آدرس :</h6>
+                        <p class="fw-bold">{{ profile.address }}</p>
+                    </div>
+                    <div>
+                        <div class="mb-3">
+                        <h6 class="text-muted">کدپستی :</h6>
+                        <p class="fw-bold">{{ profile.postalcode }}</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div >
+  <div class="row">
+    <!-- Div قرمز -->
+    <div class="col-md-6">
+      <div class="p-5 text-white" style="background-color: red;">
+        <h4>بخش قرمز</h4>
+        <p>این یک div با پس‌زمینه قرمز است.</p>
+      </div>
+    </div>
+
+    <!-- Div آبی -->
+    <div class="col-md-6">
+      <div class="p-5 text-white" style="background-color: blue;">
+        <h4>بخش آبی</h4>
+        <p>این یک div با پس‌زمینه آبی است.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- دکمه پرینت -->
+<div class="text-center mt-4">
+    <button class="btn btn-success" onclick="printPreview()">
+        پیش‌نمایش چاپ
+    </button>
+</div>
+
+<!-- اسکریپت چاپ -->
+<script>
+function printPreview() {
+    // مرورگر به صورت خودکار پنجره پیش‌نمایش چاپ را باز می‌کند
+    window.print();
+}
+</script>
+
+
 {% endblock body %}
