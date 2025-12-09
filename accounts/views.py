@@ -11,11 +11,12 @@ def user_register (request):
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             data = form.cleaned_data
-            User.objects.create_user(username = data['Username'] ,
+            user =User.objects.create_user(username = data['Username'] ,
                                      email= data['Email'] ,
                                      first_name = data['Firstname'] ,
                                      last_name = data ['Lastname'], 
                                      password=data ['Password_1'])
+            user.save()
             return redirect ('home:home') # redirect ('appname : utl name from utls.py = 'home'')
     else:
         form = UserRegisterForm()
