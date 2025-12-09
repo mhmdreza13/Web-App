@@ -1,5 +1,5 @@
 from django.shortcuts import render ,redirect
-from .forms import UserRegisterForm ,UserLoginForm
+from .forms import UserRegisterForm ,UserLoginForm ,UserUpdateForm ,ProfileUpdateForm
 from .models import *
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate ,login ,logout
@@ -57,3 +57,20 @@ def user_profile (request):
     profile = Profile.objects.get(user_id = request.user.id)
     print (profile.address)
     return render (request ,'accounts/profile.html',{'profile':profile})
+
+
+def user_update (request):
+    if request.method == "POST":
+        user_form = UserUpdateForm(request.POST,instance=request.user)
+        profile_form = ProfileUpdateForm(request.POST,instance=request.user.profile)
+        if user_form and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success(request,'به روزرسانی با موفقت انجام شد','success')
+            return redirect ('accounts:user_profile')
+    else:
+        user_form = UserUpdateForm(instance=request.user)
+        profile_form = ProfileUpdateForm(instance=request.user.profile)
+    context = {'user_form':user_form , 'profile_form':profile_form}
+
+    return render (request , "accounts/update.html",context)

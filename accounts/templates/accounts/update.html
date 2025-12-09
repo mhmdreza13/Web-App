@@ -1,0 +1,15 @@
+{% extends "main.html" %}
+
+{% block title %}ویرایش حساب{% endblock title %}
+
+{% block body %}
+    <form action = "" method = "post">
+        {% csrf_token %}
+        {{ user_form.as_p}}
+        {{ profile_form.as_p}}
+        <button type = "submit"> به روز رسانی</button>
+    </form>
+
+
+
+{% endblock body%}
