@@ -86,3 +86,18 @@ def user_update (request):
     
 
     return render (request , "accounts/update.html",context)
+
+
+
+
+def user_addresses(request):
+    # گرفتن پروفایل کاربر لاگین شده
+    profile = request.user.profile
+    
+    # گرفتن همه آدرس‌های مرتبط با پروفایل
+    addresses = profile.addresses.all()
+    
+    context = {
+        "addresses": addresses
+    }
+    return render(request, "accounts/addresses.html", context)

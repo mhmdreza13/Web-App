@@ -31,4 +31,4 @@ class UserAddresses(models.Model):
     # می‌توانی فیلدهای بیشتری مثل شماره واحد، توضیحات و ... اضافه کنی
 
     def __str__(self):
-        return f"{self.title} - {self.city}"
+        return f"{self.profile} -{self.title} - {self.city}"

@@ -42,15 +42,23 @@
                 </ul>
             </div>
             </li>
+            {% if user.is_authenticated %}
             <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#accountMenu" role="button" aria-expanded="false" aria-controls="accountMenu">
                 👤 حساب کاربری
             </a>
             <div class="collapse submenu" id="accountMenu">
                 <ul class="nav flex-column">
-                <li class="nav-item"><a class="nav-link" href="#">پروفایل</a></li>
+                
+                
+                <li class="nav-item"><a class="nav-link" href= {% url "accounts:user_profile"%} >پروفایل</a></li>
+                <li class="nav-item"><a class="nav-link" href= {% url "accounts:user_profile"%} >سفارشات</a></li>
+                <li class="nav-item"><a class="nav-link" href= {% url "accounts:user_addresses"%} >آدرس ها</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">تنظیمات</a></li>
+                
                 <li class="nav-item"><a class="nav-link" href="#">خروج</a></li>
+                {% endif %}
+                
                 </ul>
             </div>
             </li>
