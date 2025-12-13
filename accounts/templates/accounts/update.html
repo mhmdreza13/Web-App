@@ -2,8 +2,10 @@
 {% load widget_tweaks %}
 
 {% block title %}ویرایش حساب{% endblock title %}
-
+{% include "sidebar.html" %}
 {% block body %}
+<main class="col-9 col-md-10 p-4">
+
 <br>
 <form action="" method="post" class="needs-validation" novalidate>
     {% csrf_token %}
@@ -38,5 +40,10 @@
                         </div>
                         <button type="submit" class="btn btn-primary">به‌روزرسانی</button>
 </form>
+
+            </main>
     
+    </div>
+
+</div>
 {% endblock body %}
