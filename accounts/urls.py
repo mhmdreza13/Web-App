@@ -11,3 +11,4 @@ urlpatterns = [
     path ("addesses/",views.user_addresses, name='user_addresses'),
     path ("changepassowrd/",views.user_changepassowrd, name='user_changepassowrd'),
 ]
+ 
