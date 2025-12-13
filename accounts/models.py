@@ -20,3 +20,15 @@ def save_profile_user(sender ,**kwargs):
         pass
 
 post_save.connect (sender= User ,receiver=save_profile_user)
+
+
+class UserAddresses(models.Model):
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='addresses')
+    title = models.CharField(max_length=50)  # مثلا "خانه"، "محل کار"
+    city = models.CharField(max_length=100)
+    street = models.CharField(max_length=200)
+    postal_code = models.CharField(max_length=20, blank=True, null=True)
+    # می‌توانی فیلدهای بیشتری مثل شماره واحد، توضیحات و ... اضافه کنی
+
+    def __str__(self):
+        return f"{self.title} - {self.city}"

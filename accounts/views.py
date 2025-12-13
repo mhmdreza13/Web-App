@@ -26,38 +26,49 @@ def user_register (request):
 def user_login (request):
 
     if request.method == 'POST':
-        form = UserLoginForm(request.POST)
+
+        form = UserLoginForm(request.POST) # create An example where the user has entered information
+
         if form.is_valid():
+
             data = form.cleaned_data
+
             try:
+
                 user = authenticate(request ,username = User.objects.get(email= data ['user']),password = data ['password'])
+
             except:
+
                 user = authenticate(request ,username = data ['user'],password = data ['password'])
+
             if user is not None :
+
                 login(request,user)
                 messages.success(request,'با موفقیت وارد شدید.','success')
                 return redirect ('home:home')
+            
             else:
+
                 messages.success(request,'نام کاربر یا رمز عبور اشتباه است','danger')
                 redirect ('accounts:user_login')
 
     else:
+
         form = UserLoginForm()
+
     context = {'form':form}
     return render(request , 'accounts/login.html',context)    
     
-
 def user_logout (request):
+
     logout(request)
     messages.success(request,'با موفقیت خارج شدید.','info')
     return redirect ('home:home')   
 
-
 def user_profile (request):
-    profile = Profile.objects.get(user_id = request.user.id)
-    print (profile.address)
-    return render (request ,'accounts/profile.html',{'profile':profile})
 
+    profile = Profile.objects.get(user_id = request.user.id)
+    return render (request ,'accounts/profile.html',{'profile':profile})
 
 def user_update (request):
     if request.method == "POST":
@@ -72,5 +83,6 @@ def user_update (request):
         user_form = UserUpdateForm(instance=request.user)
         profile_form = ProfileUpdateForm(instance=request.user.profile)
     context = {'user_form':user_form , 'profile_form':profile_form}
+    
 
     return render (request , "accounts/update.html",context)

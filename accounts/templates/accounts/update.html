@@ -1,15 +1,42 @@
 {% extends "main.html" %}
+{% load widget_tweaks %}
 
 {% block title %}ویرایش حساب{% endblock title %}
 
 {% block body %}
-    <form action = "" method = "post">
-        {% csrf_token %}
-        {{ user_form.as_p}}
-        {{ profile_form.as_p}}
-        <button type = "submit"> به روز رسانی</button>
-    </form>
+<br>
+<form action="" method="post" class="needs-validation" novalidate>
+    {% csrf_token %}
 
-
-
-{% endblock body%}
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-sm border-0">
+                    <div class="card-header bg-primary text-white text-center">
+                        <h4 class="mb-0">ویرایش حساب کاربری</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <h6 class="text-muted">نام:</h6>
+                            {{ user_form.first_name|add_class:"form-control"|attr:"style:width:100" }}
+                        </div>
+                        <div class="mb-3">
+                            <h6 class="text-muted">نام خانوادگی:</h6>
+                            {{ user_form.last_name|add_class:"form-control"|attr:"style:width:100%" }}
+                        </div>                    
+                        <div class="mb-3">
+                            <h6 class="text-muted">ایمیل:</h6>
+                            {{ user_form.email|add_class:"form-control"|attr:"style:width:100%" }}
+                        </div>
+                            <div class="mb-3">
+                            <h6 class="text-muted">آدرس :</h6>
+                            {{ profile_form.address|add_class:"form-control"|attr:"style:width:100%"  }}
+                        </div>
+                        <div>
+                            <div class="mb-3">
+                            <h6 class="text-muted">کدپستی :</h6>
+                            {{ profile_form.postalcode|add_class:"form-control"|attr:"style:width:100%"}}
+                        </div>
+                        <button type="submit" class="btn btn-primary">به‌روزرسانی</button>
+</form>
+    
+{% endblock body %}
