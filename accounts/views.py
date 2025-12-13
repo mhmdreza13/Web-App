@@ -4,6 +4,22 @@ from .models import *
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate ,login ,logout
 from django.contrib import messages
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.decorators import login_required
+
+class CustomPasswordChangeForm(PasswordChangeForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['old_password'].label = "کلمه عبور فعلی"
+        self.fields['new_password1'].label = "کلمه عبور جدید"
+        self.fields['new_password2'].label = "تکرار کلمه عبور جدید"
+
+        # اضافه کردن placeholder فارسی
+        self.fields['old_password'].widget.attrs.update({'placeholder': 'کلمه عبور فعلی را وارد کنید'})
+        self.fields['new_password1'].widget.attrs.update({'placeholder': 'کلمه عبور جدید را وارد کنید'})
+        self.fields['new_password2'].widget.attrs.update({'placeholder': 'کلمه عبور جدید را دوباره وارد کنید'})
+
 # Create your views here.
 
 def user_register (request):
@@ -65,11 +81,13 @@ def user_logout (request):
     messages.success(request,'با موفقیت خارج شدید.','info')
     return redirect ('home:home')   
 
+@login_required(login_url="accounts:user_login")
 def user_profile (request):
 
     profile = Profile.objects.get(user_id = request.user.id)
     return render (request ,'accounts/profile.html',{'profile':profile})
 
+@login_required(login_url="accounts:user_login")
 def user_update (request):
     if request.method == "POST":
         user_form = UserUpdateForm(request.POST,instance=request.user)
@@ -101,3 +119,21 @@ def user_addresses(request):
         "addresses": addresses
     }
     return render(request, "accounts/addresses.html", context)
+
+def user_changepassowrd (request):
+
+    if request.method == "POST":
+        form = CustomPasswordChangeForm (request.user,request.POST)
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request,form.user)
+            messages.success (request ,"کلمه عبور ما موفقیت تغییر کرد",'success')
+            return redirect ("accounts:user_profile")
+        else:
+            messages.error (request ,"کلمه عبور درست انتخاب نشده",'danger')
+            return redirect ('accounts:user_changepassowrd')
+
+    else:
+        form = CustomPasswordChangeForm(request.user)
+    
+    return render (request ,"accounts/changepassword.html",{'form':form})

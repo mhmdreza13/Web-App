@@ -9,4 +9,5 @@ urlpatterns = [
     path ("profile/",views.user_profile, name='user_profile'),
     path ("update/",views.user_update, name='user_update'),
     path ("addesses/",views.user_addresses, name='user_addresses'),
+    path ("changepassowrd/",views.user_changepassowrd, name='user_changepassowrd'),
 ]
