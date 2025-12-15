@@ -12,10 +12,14 @@
                 {% for add in addresses%}
                     <div class="row card" style ="margin:10px;">
                         <div class="col">
+                        {% if add.is_Default %}
+                            <p> آدرس پیش فرض</p>
+                        {% endif %}
                         عنوان :{{ add.title }}<br>
                         شهر :{{add.city}}<br>
                         آدرس :{{add.street}}<br>
                         کدپستی :{{add.postalcode}}<br>
+                        
                         </div>
                     </div>
                 
