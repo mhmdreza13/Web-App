@@ -16,8 +16,12 @@
 
       <div class="text-start">
         {% if user.is_authenticated %}
+                {% if user.is_staff or user.is_superuser %}
+                <a type="button" class="btn btn-info" href= "/admin/">پنل مدیریت</a>
+                {% endif %}
         <a type="button" class="btn btn-info" href= {% url "accounts:user_profile"%}>حساب کاربری</a>
         <a type="button" class="btn btn-danger" href= {% url "accounts:user_logout"%}> خروج</a>
+
         {% else %}
         <a type="button" class="btn btn-warning" href= {% url "accounts:user_register"%}>ثبت نام</a>
         <a type="button" class="btn btn-success" href= {% url "accounts:user_login"%}>ورود</a>

@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import Profile
+from .models import Profile ,UserAddresses
 class UserRegisterForm (forms.Form):
     Username = forms.CharField( max_length = 50 )
     Email = forms.EmailField()
@@ -47,3 +47,10 @@ class ProfileUpdateForm (forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['phone','address','postalcode']
+
+
+class UserEditAddressForm (forms.ModelForm):
+
+    class Meta:
+        model = UserAddresses
+        fields = ['title','city','street','postal_code','is_Default']

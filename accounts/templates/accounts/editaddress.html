@@ -1,0 +1,50 @@
+
+{% extends "main.html" %}
+{% load widget_tweaks %}
+{% block title %}ویرایش آدرس{% endblock title %}
+
+{% block body %}
+<main class="col-9 col-md-10 p-4">
+
+<br>
+<form action="" method="post" class="needs-validation" novalidate>
+    {% csrf_token %}
+
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-sm border-0">
+                    <div class="card-header bg-primary text-white text-center">
+                        <h4 class="mb-0">ویرایش آدرس </h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <h6 class="text-muted">عنوان:</h6>
+                            {{ addressform.title|add_class:"form-control"|attr:"style:width:100" }}
+                        </div>
+                        <div class="mb-3">
+                            <h6 class="text-muted">شهر:</h6>
+                            {{ addressform.city|add_class:"form-control"|attr:"style:width:100%" }}
+                        </div>                    
+                        <div class="mb-3">
+                            <h6 class="text-muted">نشانی:</h6>
+                            {{ addressform.street|add_class:"form-control"|attr:"style:width:100%" }}
+                        </div>
+                            <div class="mb-3">
+                            <h6 class="text-muted">کدپستی :</h6>
+                            {{ addressform.postal_code|add_class:"form-control"|attr:"style:width:100%"  }}
+                        </div>
+                        <div>
+                            <div class="mb-3">
+                            <h6 class="text-muted">آدرس پیش فرض :</h6>
+                            {{ addressform.is_Default|add_class:"form-control"|attr:"style:width:100%"}}
+                        </div>
+                        <button type="submit" class="btn btn-primary">به‌روزرسانی</button>
+                    </div>
+</form>
+
+            </main>
+    
+    </div>
+
+</div>
+{% endblock body %}

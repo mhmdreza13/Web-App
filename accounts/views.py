@@ -1,5 +1,5 @@
 from django.shortcuts import render ,redirect
-from .forms import UserRegisterForm ,UserLoginForm ,UserUpdateForm ,ProfileUpdateForm
+from .forms import UserRegisterForm ,UserLoginForm ,UserUpdateForm ,ProfileUpdateForm ,UserEditAddressForm
 from .models import *
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate ,login ,logout
@@ -137,3 +137,17 @@ def user_changepassowrd (request):
         form = CustomPasswordChangeForm(request.user)
     
     return render (request ,"accounts/changepassword.html",{'form':form})
+
+
+def user_editaddress(request , id):
+    address = UserAddresses.objects.get(id=id)
+    if request.method == "POST":
+        addressform = UserEditAddressForm(request.POST,instance=address)
+        if addressform.is_valid():
+            addressform.save()
+            messages.success(request,'نشانی با موفقیت ذخیره شد','success')
+            return redirect ("accounts:user_addresses" )
+    else:
+        addressform = UserEditAddressForm(instance=address)
+        
+        return render(request,'accounts/editaddress.html' ,{'addressform':addressform})
