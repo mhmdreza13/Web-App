@@ -8,9 +8,6 @@ __pycache__/
 *.pyo
 *.pyd
 
-# دیتابیس لوکال (اگر sqlite استفاده می‌کنی)
-*.sqlite3
-
 # فایل‌های استاتیک جمع‌آوری شده توسط collectstatic
 staticfiles/
 
