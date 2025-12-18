@@ -147,6 +147,8 @@ def user_addaddress(request):
         if form.is_valid():
             address = form.save(commit=False)
             address.profile = request.user.profile  # یا هر فیلدی که کاربر رو نگه می‌داره
+            if address.is_Default:
+                UserAddresses.objects.filter(profile = address.profile,is_Default = True).update(is_Default=False)  
             address.save()
             messages.success(request,'نشانی با موفقیت ذخیره شد','success')
             return redirect ('accounts:user_addresses')
@@ -161,7 +163,13 @@ def user_editaddress(request , id):
     if request.method == "POST":
         addressform = UserEditAddressForm(request.POST,instance=address)
         if addressform.is_valid():
-            addressform.save()
+            edited_address = addressform.save(commit=False)
+            if edited_address.is_Default:
+            # همه‌ی آدرس‌های دیگر این پروفایل رو غیر پیش‌فرض کن 
+                UserAddresses.objects.filter( profile=edited_address.profile,
+                                              is_Default=True
+                                             ).exclude(id=edited_address.id).update(is_Default=False)     
+            edited_address.save()           
             messages.success(request,'نشانی با موفقیت ذخیره شد','success')
             return redirect ('accounts:user_addresses' )
     else:
