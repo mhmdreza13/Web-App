@@ -1,9 +1,15 @@
 from django import forms
 from django.contrib.auth.models import User
 from .models import Profile ,UserAddresses
+
+error = {
+    'min_length':'حداقل باید 5 کاراکتر داشته باشد',
+    'required':'این فیلد اجباری است',
+    'invalid':'ایمیل نامعتبر است',
+}
 class UserRegisterForm (forms.Form):
-    Username = forms.CharField( max_length = 50 )
-    Email = forms.EmailField()
+    Username = forms.CharField(error_messages=error, max_length = 50,min_length=5 )
+    Email = forms.EmailField(error_messages=error)
     Firstname = forms.CharField(max_length=50)
     Lastname = forms.CharField (max_length=50)
     Password_1 = forms.CharField(max_length=50)
@@ -50,6 +56,12 @@ class ProfileUpdateForm (forms.ModelForm):
 
 
 class UserEditAddressForm (forms.ModelForm):
+
+    class Meta:
+        model = UserAddresses
+        fields = ['title','city','street','postal_code','is_Default']
+
+class UserAddAddressForm (forms.ModelForm):
 
     class Meta:
         model = UserAddresses

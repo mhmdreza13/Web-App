@@ -1,3 +1,4 @@
+{% load static %}
 <header class="p-3 text-bg-dark">
   <div class="container-fluid">
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-between">
@@ -15,7 +16,16 @@
       </ul>
 
       <div class="text-start">
+      <button type="button" class="btn position-relative">
+        <img src ="{% static 'icons/Bell.svg' %}"> 
+      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+          99+
+      <span class="visually-hidden">unread messages</span>
+        </span>
+      </button>
+      
         {% if user.is_authenticated %}
+        
                 {% if user.is_staff or user.is_superuser %}
                 <a type="button" class="btn btn-info" href= "/admin/">پنل مدیریت</a>
                 {% endif %}
@@ -30,3 +40,4 @@
     </div>
   </div>
 </header>
+

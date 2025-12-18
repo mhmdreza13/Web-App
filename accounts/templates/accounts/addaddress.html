@@ -1,7 +1,7 @@
 {% extends "main.html" %}
 {% load widget_tweaks %}
 
-{% block title %}ویرایش حساب{% endblock title %}
+{% block title %}نشانی جدید{% endblock title %}
 {% include "sidebar.html" %}
 {% block body %}
 <main class="col-9 col-md-10 p-4">
@@ -18,32 +18,33 @@
                     </div>
                     <div class="card-body">
                         <div class="mb-3">
-                            <h6 class="text-muted">نام:</h6>
-                            {{ user_form.first_name|add_class:"form-control"|attr:"style:width:100" }}
+                            <h6 class="text-muted">عنوان:</h6>
+                            {{ form.title|add_class:"form-control"|attr:"style:width:100" }}
                         </div>
                         <div class="mb-3">
-                            <h6 class="text-muted">نام خانوادگی:</h6>
-                            {{ user_form.last_name|add_class:"form-control"|attr:"style:width:100%" }}
+                            <h6 class="text-muted">شهر :</h6>
+                            {{ form.city|add_class:"form-control"|attr:"style:width:100%" }}
                         </div>                    
                         <div class="mb-3">
-                            <h6 class="text-muted">ایمیل:</h6>
-                            {{ user_form.email|add_class:"form-control"|attr:"style:width:100%" }}
+                            <h6 class="text-muted">نشانی:</h6>
+                            {{ form.street|add_class:"form-control"|attr:"style:width:100%" }}
                         </div>
                             <div class="mb-3">
-                            <h6 class="text-muted">آدرس :</h6>
-                            {{ profile_form.address|add_class:"form-control"|attr:"style:width:100%"  }}
+                            <h6 class="text-muted">کدپستی :</h6>
+                            {{ form.postal_code|add_class:"form-control"|attr:"style:width:100%"  }}
                         </div>
                         <div>
                             <div class="mb-3">
-                            <h6 class="text-muted">کدپستی :</h6>
-                            {{ profile_form.postalcode|add_class:"form-control"|attr:"style:width:100%"}}
+                            <h6 class="text-muted">آدرس پیش فرض :</h6>
+                            {{ form.is_Default|add_class:"form-control"|attr:"style:width:100%"}}
                         </div>
-                        <button type="submit" class="btn btn-primary">به‌روزرسانی</button>
+                        <button type="submit" class="btn btn-primary">ذخیره</button>
                     </div>
 </form>
 
             </main>
     
     </div>
+
 </div>
 {% endblock body %}

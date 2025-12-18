@@ -1,5 +1,5 @@
 from django.shortcuts import render ,redirect
-from .forms import UserRegisterForm ,UserLoginForm ,UserUpdateForm ,ProfileUpdateForm ,UserEditAddressForm
+from .forms import UserRegisterForm ,UserLoginForm ,UserUpdateForm ,ProfileUpdateForm ,UserEditAddressForm,UserAddAddressForm
 from .models import *
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate ,login ,logout
@@ -120,7 +120,7 @@ def user_addresses(request):
     }
     return render(request, "accounts/addresses.html", context)
 
-def user_changepassowrd (request):
+def user_changepassword (request):
 
     if request.method == "POST":
         form = CustomPasswordChangeForm (request.user,request.POST)
@@ -139,6 +139,23 @@ def user_changepassowrd (request):
     return render (request ,"accounts/changepassword.html",{'form':form})
 
 
+
+def user_addaddress(request):
+
+    if request.method == "POST":
+        form = UserAddAddressForm(request.POST)
+        if form.is_valid():
+            address = form.save(commit=False)
+            address.profile = request.user.profile  # یا هر فیلدی که کاربر رو نگه می‌داره
+            address.save()
+            messages.success(request,'نشانی با موفقیت ذخیره شد','success')
+            return redirect ('accounts:user_addresses')
+    else:
+        form = UserAddAddressForm()
+        return render(request,'accounts/addaddress.html',{'form':form})
+    
+
+
 def user_editaddress(request , id):
     address = UserAddresses.objects.get(id=id)
     if request.method == "POST":
@@ -146,8 +163,14 @@ def user_editaddress(request , id):
         if addressform.is_valid():
             addressform.save()
             messages.success(request,'نشانی با موفقیت ذخیره شد','success')
-            return redirect ("accounts:user_addresses" )
+            return redirect ('accounts:user_addresses' )
     else:
         addressform = UserEditAddressForm(instance=address)
         
         return render(request,'accounts/editaddress.html' ,{'addressform':addressform})
+    
+
+def user_delete_address(request, id):
+    UserAddresses.objects.filter(id=id).delete() 
+    messages.success(request, 'نشانی با موفقیت حذف شد', 'success') 
+    return redirect('accounts:user_addresses')

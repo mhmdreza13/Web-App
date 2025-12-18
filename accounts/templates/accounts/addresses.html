@@ -7,7 +7,7 @@
         <main class="col-9 col-md-10 p-4">
 
             <h4 class="mb-0">آدرس های من
-            <a href="#" class="btn btn-success" style="border-radius:50%; padding:3px;"> 
+            <a href="{% url 'accounts:user_addaddress' %}" class="btn btn-success" style="border-radius:50%; padding:3px;"> 
             <img src="{% static 'icons/Add.svg' %}" alt="Add" style="width:24px; height:24px;"> 
             </a></h4>
             <hr class="border border-danger">
@@ -26,10 +26,41 @@
                                 <img src ="{% static 'icons/Edit.svg' %}">
                                 
                             </a>
-                            <a type="button" class="btn btn-danger" href = "{% url "accounts:user_editaddress" add.id %}" >
+                            <a type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >
                                 <img src ="{% static 'icons/Delete.svg' %}">
                             </a>
                         
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel"></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        آیا این مسیر حذف شود
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">خیر</button>
+        <a type="button" class="btn btn-danger" href = "{% url "accounts:user_delete_address" add.id %}" >
+            بله
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
                         </div>
                     </div>
                 
