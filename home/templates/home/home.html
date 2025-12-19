@@ -1,27 +1,29 @@
 {% extends 'main.html' %}
 {% block title %} خانه {% endblock title %}
+
 {% block body %}
 
 
         <!-- محتوای اصلی -->
         <main class="col-9 col-md-10 p-4">
-            <h1>صفحه اصلی فروشگاه</h1>
-            <p>اینجا محتوای اصلی نمایش داده می‌شود.</p>
+
+            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                {% for ctgry in category %}
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ ctgry.image.url }}" alt="..." 
+                            style="width: 100%; height: 200px;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ ctgry.name }}</h5>
+                            <!-- <p class="card-text">اکسسوری مردانه</p>>-->
+                            <a href="#" class="btn btn-primary">محصولات</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
 
 
-
-
-
-
-
-
-
-
-
-
-            </main>
+        </main>
     
-  
     </div>
 
 </div>
