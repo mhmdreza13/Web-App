@@ -11,9 +11,6 @@ __pycache__/
 # فایل‌های استاتیک جمع‌آوری شده توسط collectstatic
 staticfiles/
 
-# فایل‌های آپلودی کاربران (بهتره در گیت نباشه)
-media/
-static/
 
 # فایل‌های سیستمی
 .DS_Store
