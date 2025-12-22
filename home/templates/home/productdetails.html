@@ -1,0 +1,76 @@
+{% extends 'main.html' %}
+{% block title %} جزئیات محصول {% endblock %}
+
+{% block body %}
+
+        <!-- محتوای اصلی -->
+        <main class="col-9 col-md-10 p-4">
+
+<div class="container">
+  <div class="row">
+    <!-- تصویر محصول -->
+    <div class="col-md-5 mb-4">
+      <div class="card shadow-sm">
+        <img src="{{ productdetail.image.url }}">
+
+      </div>
+    </div>
+
+    <!-- مشخصات محصول -->
+    <div class="col-md-7">
+      <h3 class="fw-bold text-primary">{{ productdetail.name }}</h3>
+      <p class="text-muted">{{ productdetail.information }}</p>
+
+      <div class="mb-3">
+        <span class="text-danger fs-4 fw-bold">{{ productdetail.total_price }} تومان</span>
+        <span class="text-decoration-line-through text-muted ms-2">{{ productdetail.unit_price }} تومان</span>
+        <span class="badge bg-success">{{ productdetail.discount }}٪ تخفیف</span>
+      </div>
+
+      <ul class="list-group mb-3">
+        <li class="list-group-item"><strong>فروشنده:</strong> شبکه طلایی</li>
+        <li class="list-group-item"><strong>عملکرد فروشنده:</strong> عالی</li>
+        <li class="list-group-item"><strong>گارانتی:</strong> 12 ماهه نوآوران آسان پیشرو</li>
+        <li class="list-group-item"><strong>موجودی:</strong> {{ productdetail.amount }} عدد</li>
+        <li class="list-group-item"><strong>رنگ:</strong> مشکی</li>
+      </ul>
+
+      {% comment %} <div class="mb-3">
+        <strong>نوع ارسال:</strong>
+        <ul class="list-inline mt-2">
+          <li class="list-inline-item badge bg-info text-dark">اکسپرس (زیر 3 ساعت)</li>
+          <li class="list-inline-item badge bg-warning text-dark">بصرفه</li>
+          <li class="list-inline-item badge bg-light text-dark border">عادی</li>
+        </ul>
+      </div>
+
+      <div class="mb-3">
+        <strong>ویژگی‌ها:</strong>
+        <ul class="list-unstyled mt-2">
+          <li>🔌 شدت جریان خروجی: 1.5، 2، 3 آمپر</li>
+          <li>🔌 تعداد پورت: دو USB-A و یک USB-C</li>
+          <li>🔌 درگاه سه‌شاخه</li>
+          <li>⚖️ وزن: 200 گرم</li>
+        </ul>
+      </div> {% endcomment %}
+
+      <div class="d-grid gap-2">
+        <a href="#" class="btn btn-success btn-lg">افزودن به سبد خرید</a>
+        <a href="{% url 'home:product' %}" class="btn btn-outline-secondary">بازگشت به لیست محصولات</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</body>
+
+</html>
+
+        </main>
+    
+    </div>
+
+</div>
+
+{% endblock %}

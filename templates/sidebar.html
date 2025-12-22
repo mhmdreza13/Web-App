@@ -1,68 +1,63 @@
 
+    <div class="sidebar fixed-top">
+        <div class="sidebar-header">
+            <div class="icon">B</div>
+            <div class="sidebar-title">پنل مدیریت</div>
+        </div>
 
-    <style>
-        body {
-            font-family: Vazir, Tahoma, sans-serif;
-            font-size: 14px;
-            direction: rtl;
-        }
-        .sidebar {
-            height: 90vh;
-            background-color: #f8f9fa;
-            padding: 1rem;
-            border-left: 1px solid #ddd;
-        }
-        .sidebar a {
-            text-decoration: none;
-            color: #333;
-        }
-        .submenu {
-            padding-right: 1rem;
-        }
-        
-    </style>
-</head>
-<body>
-<div class="container-fluid">
-    <div class="row">
-            <!-- سایدبار -->
-        <nav class="col-3 col-md-2 sidebar">
-        <ul class="nav flex-column" style="text-align: right; padding-right: 0px;">
-            <li class="nav-item">
-            <a class="nav-link" href="#">🏠 خانه</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#productsMenu" role="button" aria-expanded="false" aria-controls="productsMenu">
-                👕 محصولات
-            </a>
-            <div class="collapse submenu" id="productsMenu">
-                <ul class="nav flex-column">
-                <li class="nav-item"><a class="nav-link" href="#">لباس مردانه</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">لباس زنانه</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">اکسسوری</a></li>
-                </ul>
+        <!-- منو با آیکون -->
+        <div class="menu-item" onclick="toggleMenu(this)">
+            <div class="d-flex align-items-center">
+                <i class="bi bi-house-door menu-icon"></i>
+                خانه
             </div>
-            </li>
-            {% if user.is_authenticated %}
-            <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#accountMenu" role="button" aria-expanded="false" aria-controls="accountMenu">
-                👤 حساب کاربری
-            </a>
-            <div class="collapse submenu" id="accountMenu">
-                <ul class="nav flex-column">
-                
-                
-                <li class="nav-item"><a class="nav-link" href= {% url "accounts:user_profile"%} >پروفایل</a></li>
-                <li class="nav-item"><a class="nav-link" href= {% url "accounts:user_profile"%} >سفارشات</a></li>
-                <li class="nav-item"><a class="nav-link" href= {% url "accounts:user_addresses"%} >آدرس ها</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">تنظیمات</a></li>
-                
-                <li class="nav-item"><a class="nav-link" href="#">خروج</a></li>
-                {% endif %}
-                
-                </ul>
+            <span class="arrow">></span>
+        </div>
+        <div class="submenu">
+            <div class="submenu-item">مرور کلی</div>
+            <div class="submenu-item">آمار روزانه</div>
+        </div>
+
+        <div class="menu-item" onclick="toggleMenu(this)">
+            <div class="d-flex align-items-center">
+                <i class="bi bi-people menu-icon"></i>
+                کاربران
             </div>
-            </li>
-        </ul>
-        
-        </nav>
+            <span class="arrow">></span>
+        </div>
+        <div class="submenu">
+            <div class="submenu-item">مرور کلی</div>
+            <div class="submenu-item">آمار روزانه</div>
+        </div>
+
+        <div class="menu-item" onclick="toggleMenu(this)">
+            <div class="d-flex align-items-center">
+                <i class="bi bi-bag menu-icon"></i>
+                سفارشات
+            </div>
+            <span class="arrow">></span>
+        </div>
+        <div class="submenu">
+            <div class="submenu-item">لیست سفارشات</div>
+            <div class="submenu-item">ثبت سفارش جدید</div>
+        </div>
+
+        <div class="menu-item" onclick="toggleMenu(this)">
+            <div class="d-flex align-items-center">
+                <i class="bi bi-gear menu-icon"></i>
+                تنظیمات
+            </div>
+            <span class="arrow">></span>
+        </div>
+    </div>
+
+
+
+    <script>
+        function toggleMenu(item) {
+            document.querySelectorAll('.menu-item').forEach(el => {
+                if (el !== item) el.classList.remove('active');
+            });
+            item.classList.toggle('active');
+        }
+    </script>
