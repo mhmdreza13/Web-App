@@ -3,6 +3,9 @@ from django.db import models
 # Create your models here.
 
 class Category (models.Model):
+    class Meta:
+        verbose_name = 'دسته بندی محصول'
+        verbose_name_plural = 'دسته بندی محصول'
 
     name = models.CharField(max_length = 100)
     create = models.DateTimeField(auto_now_add = True)

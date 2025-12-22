@@ -4,9 +4,9 @@
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-between">
 
       <ul class="nav col-12 col-lg-auto ms-lg-auto mb-2 justify-content-start mb-md-0">
-        <li><a href= {% url "home:home"%} class="nav-link px-2 text-white">فروشگاه</a></li>
+        <li><a href= "{% url 'home:home'%}" class="nav-link px-2 text-white">فروشگاه</a></li>
         <div class="vr"></div>
-        <li><a href={% url "home:product"%} class="nav-link px-2 text-white">محصولات</a></li>
+        <li><a href="{% url 'home:product' %}" class="nav-link px-2 text-white">محصولات</a></li>
         <div class="vr"></div>
         <li><a href="#" class="nav-link px-2 text-white">سبد خرید</a></li>
         <div class="vr"></div>
@@ -29,12 +29,12 @@
                 {% if user.is_staff or user.is_superuser %}
                 <a type="button" class="btn btn-info" href= "/admin/">پنل مدیریت</a>
                 {% endif %}
-        <a type="button" class="btn btn-info" href= {% url "accounts:user_profile"%}>حساب کاربری</a>
-        <a type="button" class="btn btn-danger" href= {% url "accounts:user_logout"%}> خروج</a>
+        <a type="button" class="btn btn-info" href= "{% url 'accounts:user_profile' %}">حساب کاربری</a>
+        <a type="button" class="btn btn-danger" href= "{% url 'accounts:user_logout' %}" > خروج</a>
 
         {% else %}
-        <a type="button" class="btn btn-warning" href= {% url "accounts:user_register"%}>ثبت نام</a>
-        <a type="button" class="btn btn-success" href= {% url "accounts:user_login"%}>ورود</a>
+        <a type="button" class="btn btn-warning" href= "{% url 'accounts:user_register'%}">ثبت نام</a>
+        <a type="button" class="btn btn-success" href= "{% url 'accounts:user_login'%}">ورود</a>
         {% endif %}
       </div>
     </div>

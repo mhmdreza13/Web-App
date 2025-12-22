@@ -16,7 +16,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ ctgry.name }}</h5>
                             <!-- <p class="card-text">اکسسوری مردانه</p>>-->
-                            <a href="#" class="btn btn-primary">محصولات</a>
+                            <a href="{% url 'home:category' ctgry.id %}" class="btn btn-primary">محصولات</a>
                         </div>
                     </div>
                 {% endfor %}
