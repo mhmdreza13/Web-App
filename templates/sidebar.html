@@ -1,14 +1,15 @@
-
+{% load static %}
     <div class="sidebar fixed-top">
         <div class="sidebar-header">
             <div class="icon">B</div>
-            <div class="sidebar-title">پنل مدیریت</div>
+            <div class="sidebar-title">پنل کاربری</div>
         </div>
 
         <!-- منو با آیکون -->
         <div class="menu-item" onclick="toggleMenu(this)">
             <div class="d-flex align-items-center">
-                <i class="bi bi-house-door menu-icon"></i>
+                
+                <img src="{% static 'icons/home.svg' %}" class="menu-icon" alt="خانه">
                 خانه
             </div>
             <span class="arrow">></span>

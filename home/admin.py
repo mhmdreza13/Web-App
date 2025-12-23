@@ -5,6 +5,9 @@ from .models import Category ,Product
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('name','create','update',) # tuple is faster than lists
     list_filter = ('name','create','update',)
+    prepopulated_fields = {
+        'slug': ('name',)
+    }
 admin.site.register(Category,CategoryAdmin)
 
 class ProductAdmin(admin.ModelAdmin):

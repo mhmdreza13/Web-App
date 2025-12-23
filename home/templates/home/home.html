@@ -5,18 +5,18 @@
 
 
         <!-- محتوای اصلی -->
-        <main class="col-9 col-md-10 p-4">
+        <main class="col-12 col-md-12 p-4">
             <h4 class="mb-0">گروه بندی محصولات</h4>
             <hr class="border border-danger">
             <div style="display: flex; flex-wrap: wrap; gap: 10px;">
                 {% for ctgry in category %}
-                    <div class="card" style="width: 18rem;">
+                    <div class="card" style="width: 14rem;">
                         <img src="{{ ctgry.image.url }}" alt="..." 
                             style="width: 100%; height: 200px;">
                         <div class="card-body">
                             <h5 class="card-title">{{ ctgry.name }}</h5>
                             <!-- <p class="card-text">اکسسوری مردانه</p>>-->
-                            <a href="{% url 'home:category' ctgry.id %}" class="btn btn-primary">محصولات</a>
+                            <a href="{{ctgry.get_absolute_url}}" class="btn btn-primary">محصولات</a>
                         </div>
                     </div>
                 {% endfor %}

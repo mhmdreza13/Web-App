@@ -10,6 +10,9 @@ __pycache__/
 
 # فایل‌های استاتیک جمع‌آوری شده توسط collectstatic
 staticfiles/
+media/
+static/
+db.sqlite3
 
 
 # فایل‌های سیستمی
