@@ -17,7 +17,8 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ prd.name }}</h5>
                             <p class="card-text truncate-1-lines"> {{prd.information}}</p>
-                            <p class="card-text"> قیمت : {{prd.unit_price}}</p>
+                            <p class="card-text" id = 'price'> قیمت : {{prd.unit_price}}</p>
+  
                             <p class="card-text"> موجود در انبار : {{prd.amount}}</p>
                             <a href="{% url 'home:productdetail' prd.id %}"  class="btn btn-primary align-content-center"><img src="{% static 'icons/description.svg' %}"></a>
                             <a href="#" class="btn btn-success"><img src="{% static 'icons/add-to-order.svg' %}"></a>

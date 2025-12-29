@@ -25,7 +25,8 @@
 body {
     font-family: 'Vazir', sans-serif;
     background-color: #f1f1f1;
-    padding-right: 220px; /* فضای سایدبار */
+    padding-right: 220px;
+    /* فضای سایدبار */
     margin: 0;
 }
 
@@ -36,7 +37,7 @@ body {
     width: 220px;
     height: 100vh;
     background: #fff;
-    box-shadow: -2px 0 10px rgba(0,0,0,0.08);
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.08);
     z-index: 1020;
     padding: 1.25rem 1rem;
     overflow-y: auto;
@@ -65,7 +66,8 @@ body {
 }
 
 .sidebar-title {
-    font-size: 1.1rem; /* کمی کوچک‌تر */
+    font-size: 1.1rem;
+    /* کمی کوچک‌تر */
     font-weight: 600;
     color: #212529;
 }
@@ -79,7 +81,8 @@ body {
     justify-content: space-between;
     color: #414447;
     font-weight: 500;
-    font-size: 0.95rem; /* فونت کوچک‌تر */
+    font-size: 0.95rem;
+    /* فونت کوچک‌تر */
     transition: background-color 0.2s;
 }
 
@@ -93,7 +96,8 @@ body {
 }
 
 .menu-icon {
-    margin-left: 0.75rem; /* فاصله بین آیکون و متن */
+    margin-left: 0.75rem;
+    /* فاصله بین آیکون و متن */
     font-size: 1.1rem;
     color: #6c757d;
 }
@@ -114,20 +118,25 @@ body {
 .submenu {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.25s ease-in-out; /* سرعت یکسان + تابع یکنواخت */
+    transition: max-height 0.25s ease-in-out;
+    /* سرعت یکسان + تابع یکنواخت */
     padding-right: 1.25rem;
     margin-top: 0.4rem;
     margin-bottom: 0.6rem;
 }
 
-.menu-item.active + .submenu {
-    max-height: 200px; /* کاهش از 500px به 200px — نزدیک به واقعیت */
+.menu-item.active+.submenu {
+    max-height: 200px;
+    /* کاهش از 500px به 200px — نزدیک به واقعیت */
 }
 
 .submenu-item {
     padding: 0.45rem 1rem;
+    text-decoration: none;
+    margin-bottom: 3px;
     color: #545758;
-    font-size: 0.875rem; /* فونت کوچک‌تر */
+    font-size: 0.875rem;
+    /* فونت کوچک‌تر */
     border-radius: 6px;
     cursor: pointer;
     transition: background-color 0.2s;
@@ -137,7 +146,9 @@ body {
     background-color: #f8f9fa;
 }
 
+
 /* اطمینان از استفاده از فونت وزیر در همه جا */
+
 * {
     font-family: 'Vazir', sans-serif !important;
 }

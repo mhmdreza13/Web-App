@@ -8,10 +8,7 @@ __pycache__/
 *.pyo
 *.pyd
 
-# فایل‌های استاتیک جمع‌آوری شده توسط collectstatic
-staticfiles/
 media/
-static/
 db.sqlite3
 
 

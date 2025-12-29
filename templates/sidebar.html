@@ -9,8 +9,21 @@
         <div class="menu-item" onclick="toggleMenu(this)">
             <div class="d-flex align-items-center">
                 
-                <img src="{% static 'icons/home.svg' %}" class="menu-icon" alt="خانه">
-                خانه
+                <img src="{% static 'icons/reports.svg' %}" class="menu-icon" alt="گزارشات">
+                حساب کاربری
+            </div>
+            <span class="arrow">></span>
+        </div>
+        <div class="submenu">
+            <div class="submenu-item"><a class="submenu-item" href="{% url 'accounts:user_profile' %}">اطلاعات حساب</a></div>
+            <div class="submenu-item"><a class="submenu-item" href="{% url 'accounts:user_addresses' %}">آدرس ها</a><br></div>
+            <div class="submenu-item"><a class="submenu-item" href="{% url 'accounts:user_changepassowrd' %}">تغییر رمز</a></div>
+        </div>
+        <div class="menu-item" onclick="toggleMenu(this)">
+            <div class="d-flex align-items-center">
+                
+                <img src="{% static 'icons/reports.svg' %}" class="menu-icon" alt="گزارشات">
+                گزارش ها
             </div>
             <span class="arrow">></span>
         </div>
@@ -21,7 +34,7 @@
 
         <div class="menu-item" onclick="toggleMenu(this)">
             <div class="d-flex align-items-center">
-                <i class="bi bi-people menu-icon"></i>
+                <img src="{% static 'icons/users.svg' %}" class="menu-icon" alt="کاربران">
                 کاربران
             </div>
             <span class="arrow">></span>
@@ -33,7 +46,7 @@
 
         <div class="menu-item" onclick="toggleMenu(this)">
             <div class="d-flex align-items-center">
-                <i class="bi bi-bag menu-icon"></i>
+                <img src="{% static 'icons/orders.svg' %}" class="menu-icon" alt="سفارشات">
                 سفارشات
             </div>
             <span class="arrow">></span>
@@ -45,10 +58,14 @@
 
         <div class="menu-item" onclick="toggleMenu(this)">
             <div class="d-flex align-items-center">
-                <i class="bi bi-gear menu-icon"></i>
+                <img src="{% static 'icons/settings.svg' %}" class="menu-icon" >
                 تنظیمات
             </div>
             <span class="arrow">></span>
+        </div>
+        <div class="submenu">
+            <div class="submenu-item">لیست سفارشات</div>
+            <div class="submenu-item">ثبت سفارش جدید</div>
         </div>
     </div>
 

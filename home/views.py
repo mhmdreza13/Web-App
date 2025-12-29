@@ -3,7 +3,7 @@ from .models import Category ,Product
 # Create your views here.
 
 def home (request):
-    category = Category.objects.all()
+    category = Category.objects.filter(is_sub_category = 0)
     return render (request , 'home/home.html',{'category':category}) 
 
 def product (requrst,slug = None,id = None):

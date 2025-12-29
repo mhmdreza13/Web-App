@@ -1,5 +1,5 @@
 {% load static %}
-<header class="p-3 text-bg-dark">
+<header class="p-3 text-bg-dark sticky-top">
   <div class="container-fluid">
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-between">
 
@@ -7,6 +7,16 @@
         <li><a href= "{% url 'home:home'%}" class="nav-link px-2 text-white">فروشگاه</a></li>
         <div class="vr"></div>
         <li><a href="{% url 'home:product' %}" class="nav-link px-2 text-white">محصولات</a></li>
+        <div class="vr"></div>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            گروه محصولات
+          </a>
+          <ul class="dropdown-menu">
+
+            <li><a class="dropdown-item" href="#">Action</a></li>
+          </ul>
+        </li>
         <div class="vr"></div>
         <li><a href="#" class="nav-link px-2 text-white">سبد خرید</a></li>
         <div class="vr"></div>
@@ -17,7 +27,7 @@
 
       <div class="text-start">
       <button type="button" class="btn position-relative">
-        <img src ="{% static 'icons/Bell.svg' %}"> 
+        <img src ="{% static 'icons/notifications.svg' %}" title="اعلان ها"> 
       <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
           99+
       <span class="visually-hidden">unread messages</span>
@@ -27,10 +37,10 @@
         {% if user.is_authenticated %}
         
                 {% if user.is_staff or user.is_superuser %}
-                <a type="button" class="btn btn-info" href= "/admin/">پنل مدیریت</a>
+                <a type="button" class="btn" href= "/admin/"><img src ="{% static 'icons/admin_panel_settings.svg' %}" title="پنل ادمین"></a>
                 {% endif %}
-        <a type="button" class="btn btn-info" href= "{% url 'accounts:user_profile' %}">حساب کاربری</a>
-        <a type="button" class="btn btn-danger" href= "{% url 'accounts:user_logout' %}" > خروج</a>
+        <a type="button" class="btn" href= "{% url 'accounts:user_profile' %}" ><img src ="{% static 'icons/account.svg' %}" title="حساب کاربری"> </a>
+        <a type="button" class="btn" href= "{% url 'accounts:user_logout' %}" > <img src ="{% static 'icons/logout.svg' %}" title="خروج از حساب"></a>
 
         {% else %}
         <a type="button" class="btn btn-warning" href= "{% url 'accounts:user_register'%}">ثبت نام</a>

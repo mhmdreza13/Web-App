@@ -1,0 +1,49 @@
+.category-slider-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.category-slider {
+    display: flex;
+    gap: 10px;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    /* برای اسکرول نرم */
+    padding: 10px 0;
+}
+
+.category-slide {
+    flex: 0 0 auto;
+    /* جلوگیری از کوچک شدن کارت‌ها */
+    width: 14rem;
+}
+
+.slider-btn {
+    background: rgba(255, 255, 255, 0.8);
+    border: 2px solid #ddd;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+}
+
+.slider-btn:hover {
+    background: #f0f0f0;
+}
+
+.slider-btn-left {
+    margin-right: 10px;
+}
+
+.slider-btn-right {
+    margin-left: 10px;
+}
